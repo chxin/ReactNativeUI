@@ -12,9 +12,17 @@ import {
 } from 'react-native';
 
 class LoginViaID extends Component<Props> {
-  // static navigationOptions = {
-  //   title: 'LoginViaID',
-  // };
+  static navigationOptions = {
+    headerTitle: 'LoginViaID',
+    head: null,
+  };
+  constructor(props) {
+    super(props);
+    this.NaviCode = this.NaviCode.bind(this);
+  }
+  NaviCode() {
+    this.props.navigation.navigate( 'ViaCode', {} );
+  }
   render() {
     return (
       <View style={styles.container} >
@@ -32,7 +40,7 @@ class LoginViaID extends Component<Props> {
             </View>
           </View>
           <Button title="Log in" color="green" onPress={Login} style={styles.button}/>
-          <Text onPress={NaviCode} style={styles.navi}>Log in through verification code</Text>
+          <Text onPress={this.NaviCode} style={styles.navi}>Log in through verification code</Text>
         </ImageBackground>
       </View>
 
@@ -43,9 +51,8 @@ class LoginViaID extends Component<Props> {
 const Login = () => {
   Alert.alert('log in');
 }
-const NaviCode = () => {
-  navigate('ViaCode');
-}
+
+
 
 const styles = StyleSheet.create({
   container: {
